@@ -23,8 +23,15 @@ class ContentViewSet(viewsets.ViewSet):
         serializer = ContentSerializer(content)
         return Response(serializer.data)
 
-    def update(self, request):
-        pass
+    def update(self, request, pk):
+        content = Content.objects.get(id=pk)
+        serializer = ContentSerializer(instance=content, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status.HTTP_202_ACCEPTED)
 
-    def destroy(self, request):
-        pass
+    def destroy(self, request, pk):
+        content = Content.objects.get(id=pk)
+        content.delete()
+        return Response(status.HTTP_204_NO_CONTENT)
+
