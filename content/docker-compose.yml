@@ -8,3 +8,17 @@ services:
       - 8000:8000
     volumes:
       - .:/app
+    depends_on:
+      - db
+
+  db:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_DB=content
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - .dbdata:/var/lib/postgres
+    ports:
+      - 54322:5432
