@@ -22,7 +22,7 @@ class Catalog(db.Model):
 
 
 @app.route('/catalog/list')
-def index():
+def catalog_list_view():
     return jsonify(Catalog.query.all())
 
 if __name__ == '__main__':
