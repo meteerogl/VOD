@@ -20,3 +20,9 @@ services:
       - .dbdata:/var/lib/mysql
     ports:
       - 3366:3306
+
+  cache:
+    image: 'redis'
+    command: redis-server --appendonly yes
+    volumes:
+      - .redis_data:/data
