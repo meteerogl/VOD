@@ -7,7 +7,7 @@ from content.serializers import ContentSerializer
 from django.core.cache import cache as redis_cache
 
 
-# TODO: Write helper functions or decarator for update redis
+# TODO: Write helper functions or decarator for update redis -> Maybe we can use core/redis_helper line of code are same :(
 class ContentViewSet(viewsets.ViewSet):
     def list(self, request):
         redis_response = redis_cache.get('content_list')
