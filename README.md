@@ -1,4 +1,12 @@
 
+TECH STACK
+- Python
+- Django
+- Flask
+- Docker
+- Redis
+
+
 - docker-compose exec backend sh
 
 python manager.py db init
