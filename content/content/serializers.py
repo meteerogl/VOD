@@ -24,5 +24,10 @@ class ContentReadSerializer(serializers.ModelSerializer):
     def get_category_name(self, obj):
         catalog_name_list = get_catalog_name_list()
         if catalog_name_list:
-            return next(item for item in catalog_name_list if item["id"] == obj.catalog_id)['name']
+            # [catalog for catalog in catalog_name_list if catalog['id'] == obj.catalog_id]
+            # Use this method or except StopIteration error
+            try:
+                return next(item for item in catalog_name_list if item["id"] == obj.catalog_id)['name']
+            except Exception as e:
+                return None
         return None

@@ -30,11 +30,12 @@ class Catalog(db.Model):
 def catalog_list_view():
     response = dict()
     response['status'] = 1  # There is no control now
-    response['data'] = json.loads(redis_obj.get('catalog_list'))
-
-    if response['data'] is None:
+    response['data'] = dict()
+    redis_obj.delete('catalog_list')
+    if redis_obj.get('catalog_list') is None:
         # TODO: Find right solution for 'json.dumps(json.loads(jsonify(Catalog.query.all()).data)))'
         redis_obj.set('catalog_list', json.dumps(json.loads(jsonify(Catalog.query.all()).data)))
+    response['data'] = json.loads(redis_obj.get('catalog_list'))
     return jsonify(response)
 
 
