@@ -59,9 +59,9 @@ $ python manage.py migrate
 
 
   - Delete
-    * (POST) http://localhost:8000/api/contents/<string:id> 
+    * (DELETE) http://localhost:8000/api/contents/<string:id> 
   - Update
-    * (POST) http://localhost:8000/api/contents/<string:id>
+    * (PUT) http://localhost:8000/api/contents/<string:id>
 
 ### Tests
   
